@@ -19,12 +19,14 @@ var (
 )
 
 func Run(dt string) {
+	log.Printf("here")
 	srv = service.New()
 	defer srv.Close()
 	for {
 		switch dt {
 		case "substrate":
-			subscribeConn := &recws.RecConn{KeepAliveTimeout: 10 * time.Second, WriteTimeout: time.Second * 5, ReadTimeout: 10 * time.Second}
+			log.Printf("herestart")
+			subscribeConn := &recws.RecConn{KeepAliveTimeout: 10 * time.Second, WriteTimeout: time.Second * 5, ReadTimeout: 30 * time.Second}
 			subscribeConn.Dial(util.WSEndPoint, nil)
 			go srv.Subscribe(subscribeConn, stop)
 		default:

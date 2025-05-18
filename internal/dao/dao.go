@@ -38,7 +38,7 @@ func newCachePool(host, password string) *redis.Pool {
 		IdleTimeout: 240 * time.Second,
 		Dial: func() (redis.Conn, error) {
 			// the redis protocol should probably be made sett-able
-			c, err := redis.Dial("tcp", host, redis.DialReadTimeout(time.Millisecond*200), redis.DialConnectTimeout(time.Millisecond*200), redis.DialWriteTimeout(time.Millisecond*200))
+			c, err := redis.Dial("tcp", host, redis.DialReadTimeout(time.Millisecond*2000), redis.DialConnectTimeout(time.Millisecond*2000), redis.DialWriteTimeout(time.Millisecond*2000))
 			if err != nil {
 				return nil, err
 			}
