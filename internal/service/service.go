@@ -27,6 +27,7 @@ func New() (s *Service) {
 	s = &Service{dao: d}
 	s.initSubRuntimeLatest()
 	pluginRegister(dbStorage)
+	log.Printf("Service init completed")
 	return s
 }
 

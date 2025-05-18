@@ -25,6 +25,7 @@ func (s *Service) Subscribe(conn ws.WsConn, stop chan struct{}) {
 	done := make(chan struct{})
 
 	subscribeSrv := s.initSubscribeService(done)
+	log.Printf("Subscription init completed")
 	go func() {
 		defer close(done)
 		for {

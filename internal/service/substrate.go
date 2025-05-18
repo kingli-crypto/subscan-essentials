@@ -67,6 +67,8 @@ func (s *SubscribeService) parser(message []byte) (err error) {
 		return err
 	}
 
+	log.Printf("Message: %s %s", j.Id, j.Method)
+
 	switch j.Id {
 	case runtimeVersion:
 		r := j.ToRuntimeVersion()
