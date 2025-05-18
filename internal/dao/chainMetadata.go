@@ -40,8 +40,7 @@ func (d *Dao) IncrMetadata(c context.Context, filed string, incrNum int) (err er
 func (d *Dao) GetMetadata(c context.Context) (ms map[string]string, err error) {
 	conn, _ := d.redis.GetContext(c)
 	defer conn.Close()
-	ms, err = redis.StringMap(conn.Do("HGETALL", RedisMetadataKey))
-	return
+	return redis.StringMap(conn.Do("HGETALL", RedisMetadataKey))
 }
 
 func (d *Dao) GetBestBlockNum(c context.Context) (uint64, error) {

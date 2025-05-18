@@ -238,5 +238,8 @@ func (s *Service) FillBlockData(conn websocket.WsConn, blockNum int, finalized b
 func (s *Service) updateChainMetadata(metadata map[string]interface{}) (err error) {
 	c := context.TODO()
 	err = s.dao.SetMetadata(c, metadata)
+	if err != nil {
+		log.Printf("Failed to update metadata. %s", err)
+	}
 	return
 }
